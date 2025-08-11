@@ -28,6 +28,24 @@ func ListFiles(dir string) ([]string, error) {
 	return files, nil
 }
 
+// fixGarbledSymbols replaces common mis-encoded sequences with correct characters.
+func fixGarbledSymbols(s string) string {
+	replacements := map[string]string{
+		"â€“": "–",
+		"â€¦": "…",
+		"â€˜": "‘",
+		"â€™": "’",
+		"â€œ": "“",
+		"â€": "”",
+		"â€¢": "•",
+	}
+
+	for bad, good := range replacements {
+		s = strings.ReplaceAll(s, bad, good)
+	}
+	return s
+}
+
 // ReadFilesConcurrently reads all files from the given directory concurrently,
 // returning a slice of Scenario structs containing filename and content.
 func ReadFilesConcurrently(dir string, fileNames []string) ([]model.Scenario, error) {
@@ -39,12 +57,13 @@ func ReadFilesConcurrently(dir string, fileNames []string) ([]model.Scenario, er
 		wg.Add(1)
 		go func(fname string) {
 			defer wg.Done()
-			content, err := os.ReadFile(filepath.Join(dir, fname))
+			contentRaw, err := os.ReadFile(filepath.Join(dir, fname))
 			if err != nil {
 				errCh <- fmt.Errorf("read file %s: %w", fname, err)
 				return
 			}
-			scenarioCh <- model.Scenario{Filename: fname, Content: string(content)}
+			content := fixGarbledSymbols(string(contentRaw))
+			scenarioCh <- model.Scenario{Filename: fname, Content: content}
 		}(name)
 	}
 
@@ -52,10 +71,13 @@ func ReadFilesConcurrently(dir string, fileNames []string) ([]model.Scenario, er
 	close(scenarioCh)
 	close(errCh)
 
-	if len(errCh) > 0 {
-		for err := range errCh {
-			fmt.Fprintln(os.Stderr, err)
-		}
+	var errs []error
+	for err := range errCh {
+		errs = append(errs, err)
+		fmt.Fprintln(os.Stderr, err)
+	}
+
+	if len(errs) > 0 {
 		return nil, fmt.Errorf("one or more files failed to read")
 	}
 
