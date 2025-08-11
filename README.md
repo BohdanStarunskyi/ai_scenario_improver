@@ -61,7 +61,9 @@ go_scenario_improver/
 Hey! Today I want to show you three tech gadgets that might just blow your mind. First, there's this tiny smart ring that lets you control your phone with just a tap—whether it's changing songs, answering calls, or even unlocking your door without pulling out your phone. Then, imagine a full keyboard that folds up small enough to fit in your pocket. You can set it up anywhere and instantly turn any surface into your workspace. Finally, check out this futuristic 3D motion mouse. Instead of moving it on a desk, you move your hand in the air to control your cursor—like something straight out of a sci-fi movie. Which one would you want to try? Let me know down below!
 ```
 
-## Example Output PDF
+## Example Output PDF Screenshot
+
+<img width="614" height="528" alt="image" src="https://github.com/user-attachments/assets/2337ae5a-de95-47e0-997b-5b377ec698e1" />
 
 
 
