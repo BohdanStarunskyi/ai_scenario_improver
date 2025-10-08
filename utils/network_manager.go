@@ -1,8 +1,9 @@
-package netowrking
+package utils
 
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -17,9 +18,24 @@ Add YouTube-style delivery notations such as [Pause], [Emotional], [Excited], [W
 IMPORTANT: Output only the improved script content. Do NOT include any introductory phrases, explanations, or summaries.`
 )
 
+type Requester interface {
+	SendRequest(prompt string) (string, error)
+}
+
 type NetworkManager struct {
 	ApiKey string
 	Client *http.Client
+}
+
+func NewNeworkManager(apiKey string, client *http.Client) (*NetworkManager, error) {
+	if apiKey == "" || client == nil {
+		return nil, errors.New("couldn't init network manager, check envs")
+	}
+	manager := NetworkManager{
+		ApiKey: apiKey,
+		Client: client,
+	}
+	return &manager, nil
 }
 
 func (n NetworkManager) SendRequest(prompt string) (string, error) {
