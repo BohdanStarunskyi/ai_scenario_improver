@@ -1,13 +1,13 @@
-# ScenarioAI - YouTube Script Improver
+# ScenarioAI - Script Improver
 
-A full-stack web application that transforms your ideas into compelling YouTube scenarios using AI. Features a sleek React frontend and a robust Go backend API, powered by Google's Gemini 2.0 Flash for intelligent script enhancement with professional delivery notations.
+A full-stack web application that transforms your ideas into compelling scenarios using AI. Features a sleek React frontend and a robust Go backend API, powered by Google's Gemini 2.0 Flash for intelligent script enhancement with professional delivery notations.
 
 ## Project Description
 
 * **Modern Web Interface**: Intuitive React frontend with real-time scenario generation
 * **Powerful API Backend**: High-performance Go server with clean architecture and comprehensive testing
-* **AI-Powered Enhancement**: Automatically improves grammar, style, and flow to sound like a charismatic YouTuber
-* **Professional Delivery Notations**: Adds YouTube-style cues like [Pause], [Emotional], [Excited], [Whisper], or [Joke]
+* **AI-Powered Enhancement**: Automatically improves grammar, makes it comfortable to make videos
+* **Professional Delivery Notations**: Adds cues like [Pause], [Emotional], [Excited], [Whisper], or [Joke]
 * **Real-time Processing**: Instant scenario generation with loading states and error handling
 * **Responsive Design**: Beautiful UI that works seamlessly across all devices
 
@@ -49,7 +49,7 @@ A full-stack web application that transforms your ideas into compelling YouTube 
 ## Project Structure
 
 ```
-go_ai_youtube_scenario_improver/
+ai_scenario_improver/
 ├── backend/                    # Go API Server
 │   ├── main.go                # Application entry point
 │   ├── go.mod                 # Go module dependencies
@@ -147,8 +147,8 @@ Hey! Today I want to show you three tech gadgets that might just blow your mind.
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/BohdanStarunskyi/go_ai_youtube_scenario_improver.git
-cd go_ai_youtube_scenario_improver
+git clone https://github.com/BohdanStarunskyi/ai_scenario_improver.git
+cd ai_scenario_improver
 ```
 
 2. **Backend Setup**
@@ -189,7 +189,7 @@ The frontend will start on `http://localhost:5173`
 2. **Start Frontend**: `cd web && npm run dev` (Port 5173)
 3. **Open Browser**: Navigate to `http://localhost:5173`
 4. **Enter Your Idea**: Type your video concept and click "Generate Scenario"
-5. **Get Enhanced Script**: Watch as AI transforms your idea into a professional YouTube script
+5. **Get Enhanced Script**: Watch as AI transforms your idea into a professional script
 
 ## API Endpoints
 
@@ -213,7 +213,7 @@ Request Body:
 
 Response:
 {
-  "scenario": "Enhanced YouTube script with delivery notations"
+  "scenario": "Enhanced script with delivery notations"
 }
 ```
 
@@ -272,7 +272,6 @@ The frontend is configured to connect to the backend at `http://localhost:8080`.
 ### AI Enhancement
 * Grammar and style improvement
 * Natural, conversational tone
-* YouTube-specific delivery notations
 * Emotional cues and pacing suggestions
 * Engagement optimization
 
