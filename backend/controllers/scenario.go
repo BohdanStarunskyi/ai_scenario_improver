@@ -3,6 +3,7 @@ package controllers
 import (
 	"go_scenario_improver/dto"
 	"go_scenario_improver/services"
+	"log/slog"
 	"net/http"
 
 	"github.com/go-playground/validator/v10"
@@ -28,14 +29,19 @@ func NewScenarioController(ss services.ScenarioService, va *validator.Validate) 
 func (s *scenarioControllerImpl) GenerateScenario(c echo.Context) error {
 	var req dto.GenerateScenarioRequest
 	if err := c.Bind(&req); err != nil {
-		return c.JSON(http.StatusBadRequest, echo.Map{"message": "error, check request"})
+		slog.Error("Failed to bind request", "error", err, "ip", c.RealIP())
+		return c.JSON(http.StatusBadRequest, echo.Map{"message": "Invalid request format"})
 	}
+
 	if err := s.Va.Struct(req); err != nil {
-		return c.JSON(http.StatusBadRequest, echo.Map{"message": "error " + err.Error()})
+		slog.Warn("Request validation failed", "error", err, "request", req, "ip", c.RealIP())
+		return c.JSON(http.StatusBadRequest, echo.Map{"message": "Validation error: " + err.Error()})
 	}
+
 	resp, err := s.Ss.GenerateScenario(req)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, echo.Map{"message": "error generating scenario, try again later"})
+		slog.Error("Failed to generate scenario", "error", err, "request", req, "ip", c.RealIP())
+		return c.JSON(http.StatusInternalServerError, echo.Map{"message": "Error generating scenario, please try again later"})
 	}
 
 	return c.JSON(http.StatusOK, resp)
