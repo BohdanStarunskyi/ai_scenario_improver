@@ -111,11 +111,8 @@ go_ai_youtube_scenario_improver/
 ## Screenshots
 
 ### Frontend Interface
-![Frontend Screenshot Placeholder - Modern React Interface]()
-*The sleek React frontend with gradient backgrounds and smooth animations*
-
-![Frontend Results Placeholder - Scenario Generation Results]()
-*Real-time scenario generation with beautiful result display*
+<img width="1440" height="818" alt="Screenshot 2025-10-25 at 10 30 38" src="https://github.com/user-attachments/assets/e6496885-4fac-4557-a591-6d227ee4c2e6" />
+<img width="1440" height="812" alt="Screenshot 2025-10-25 at 10 30 25" src="https://github.com/user-attachments/assets/40eb8be6-7e7b-4872-b560-e2fb7145ac60" />
 
 ## Example Usage
 
