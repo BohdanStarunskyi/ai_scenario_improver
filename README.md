@@ -111,8 +111,8 @@ go_ai_youtube_scenario_improver/
 ## Screenshots
 
 ### Frontend Interface
-<img width="1440" height="818" alt="Screenshot 2025-10-25 at 10 30 38" src="https://github.com/user-attachments/assets/e6496885-4fac-4557-a591-6d227ee4c2e6" />
 <img width="1440" height="812" alt="Screenshot 2025-10-25 at 10 30 25" src="https://github.com/user-attachments/assets/40eb8be6-7e7b-4872-b560-e2fb7145ac60" />
+<img width="1440" height="818" alt="Screenshot 2025-10-25 at 10 30 38" src="https://github.com/user-attachments/assets/e6496885-4fac-4557-a591-6d227ee4c2e6" />
 
 ## Example Usage
 
